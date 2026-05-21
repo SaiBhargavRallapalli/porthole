@@ -9,33 +9,74 @@ permissions:
   contents: write
 
 jobs:
-  release:
-    name: Build binaries & publish
-    runs-on: ubuntu-latest
-
+  build-macos:
+    name: Build macOS binaries
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: '22'
 
-      - name: Install dependencies
-        run: npm install
+      - run: npm install
+      - run: npm run build
 
-      - name: Build TypeScript
-        run: npm run build
-
-      - name: Build standalone binaries
+      - name: Build macOS pkg binaries
         working-directory: packages/cli
+        env:
+          PKG_TARGETS: porthole-macos-arm64,porthole-macos-x64
         run: node scripts/package.js
 
-      - name: Compute SHA-256 checksums
-        working-directory: packages/cli/binaries
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos-binaries
+          path: packages/cli/binaries/porthole-macos-*
+
+  build-linux:
+    name: Build Linux & Windows binaries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - run: npm install
+      - run: npm run build
+
+      - name: Build Linux/Windows pkg binaries
+        working-directory: packages/cli
+        env:
+          PKG_TARGETS: porthole-linux-x64,porthole-win-x64.exe
+        run: node scripts/package.js
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux-binaries
+          path: |
+            packages/cli/binaries/porthole-linux-x64
+            packages/cli/binaries/porthole-win-x64.exe
+
+  release:
+    name: GitHub Release & npm publish
+    needs: [build-macos, build-linux]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Stage release binaries
         run: |
-          sha256sum porthole-macos-arm64 porthole-macos-x64 porthole-linux-x64 porthole-win-x64.exe \
-            > checksums.txt || true
+          mkdir -p packages/cli/binaries
+          cp artifacts/macos-binaries/* packages/cli/binaries/
+          cp artifacts/linux-binaries/* packages/cli/binaries/
+          cd packages/cli/binaries
+          sha256sum porthole-macos-arm64 porthole-macos-x64 porthole-linux-x64 porthole-win-x64.exe > checksums.txt
           cat checksums.txt
 
       - name: Create GitHub Release
@@ -49,13 +90,22 @@ jobs:
             packages/cli/binaries/checksums.txt
           generate_release_notes: true
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
       - name: Publish @porthole-tunnel/cli to npm
+        if: ${{ secrets.NPM_TOKEN }}
+        continue-on-error: true
         working-directory: packages/cli
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @porthole-tunnel/server to npm
+        if: ${{ secrets.NPM_TOKEN }}
+        continue-on-error: true
         working-directory: packages/server
         run: npm publish --access public
         env:

@@ -9,7 +9,7 @@ const program = new Command();
 program
   .name('porthole')
   .description('Expose your local server to the internet')
-  .version('1.0.0')
+  .version('1.0.1')
   .argument('<port>', 'Local port to expose')
   .option('-s, --subdomain <name>', 'Request a specific subdomain')
   .option('--server <url>', 'Porthole server URL', 'http://localhost:3000')

@@ -16,7 +16,7 @@ class Porthole < Formula
   desc "Expose your local server to the internet"
   homepage "https://github.com/SaiBhargavRallapalli/porthole"
   license "MIT"
-  version "1.0.0"
+  version "1.0.1"
 
   BASE = "https://github.com/SaiBhargavRallapalli/porthole/releases/download/v#{version}"
 
