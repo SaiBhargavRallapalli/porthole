@@ -4,14 +4,14 @@
   "description": "Porthole tunnel server — self-hosted HTTP tunnel infrastructure",
   "license": "MIT",
   "author": "porthole contributors",
-  "homepage": "https://github.com/OWNER/porthole#readme",
+  "homepage": "https://github.com/SaiBhargavRallapalli/porthole#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OWNER/porthole.git",
+    "url": "https://github.com/SaiBhargavRallapalli/porthole.git",
     "directory": "packages/server"
   },
   "bugs": {
-    "url": "https://github.com/OWNER/porthole/issues"
+    "url": "https://github.com/SaiBhargavRallapalli/porthole/issues"
   },
   "keywords": ["tunnel", "server", "websocket", "proxy", "porthole"],
   "engines": {

@@ -1,20 +1,20 @@
 # To use this formula, create a tap:
-#   brew tap OWNER/porthole https://github.com/OWNER/porthole
+#   brew tap SaiBhargavRallapalli/porthole https://github.com/SaiBhargavRallapalli/porthole
 #   brew install porthole
 #
 # Or install directly:
-#   brew install --formula https://raw.githubusercontent.com/OWNER/porthole/main/Formula/porthole.rb
+#   brew install --formula https://raw.githubusercontent.com/SaiBhargavRallapalli/porthole/main/Formula/porthole.rb
 #
 # After a release, update version + sha256 values and run:
 #   brew audit --new-formula Formula/porthole.rb
 
 class Porthole < Formula
   desc "Expose your local server to the internet"
-  homepage "https://github.com/OWNER/porthole"
+  homepage "https://github.com/SaiBhargavRallapalli/porthole"
   license "MIT"
   version "1.0.0"
 
-  BASE = "https://github.com/OWNER/porthole/releases/download/v#{version}"
+  BASE = "https://github.com/SaiBhargavRallapalli/porthole/releases/download/v#{version}"
 
   on_macos do
     on_arm do

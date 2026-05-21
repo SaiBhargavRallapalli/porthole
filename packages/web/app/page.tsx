@@ -86,7 +86,7 @@ function Navbar() {
           <a href="#quick-start" className="hover:text-zinc-100 transition-colors hidden sm:inline">Quick start</a>
           <a href="#self-host" className="hover:text-zinc-100 transition-colors hidden sm:inline">Self-host</a>
           <a
-            href="https://github.com/OWNER/porthole"
+            href="https://github.com/SaiBhargavRallapalli/porthole"
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-1.5 hover:text-zinc-100 transition-colors"
@@ -341,7 +341,7 @@ function QuickStart() {
               <BrewIcon />
               <span className="font-semibold text-zinc-200">via Homebrew (macOS)</span>
             </div>
-            <CodeBlock label="Add tap" code="brew tap OWNER/porthole" />
+            <CodeBlock label="Add tap" code="brew tap SaiBhargavRallapalli/porthole" />
             <CodeBlock label="Install" code="brew install porthole" />
             <CodeBlock label="Use" code="porthole 3000" />
             <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-4 text-sm text-zinc-400">
@@ -481,7 +481,7 @@ function SelfHost() {
             <h3 className="font-semibold text-zinc-200 text-lg">Deploy the tunnel server</h3>
 
             <Step n={1} title="Clone the repo">
-              <CodeBlock label="" code="git clone https://github.com/OWNER/porthole" />
+              <CodeBlock label="" code="git clone https://github.com/SaiBhargavRallapalli/porthole" />
             </Step>
 
             <Step n={2} title="Deploy packages/server to Railway or Render">
@@ -572,13 +572,13 @@ function Footer() {
           <span>MIT license</span>
         </div>
         <div className="flex items-center gap-6">
-          <a href="https://github.com/OWNER/porthole" target="_blank" rel="noreferrer" className="hover:text-zinc-300 transition-colors">
+          <a href="https://github.com/SaiBhargavRallapalli/porthole" target="_blank" rel="noreferrer" className="hover:text-zinc-300 transition-colors">
             GitHub
           </a>
           <a href="https://www.npmjs.com/package/@porthole/cli" target="_blank" rel="noreferrer" className="hover:text-zinc-300 transition-colors">
             npm
           </a>
-          <a href="https://github.com/OWNER/porthole/issues" target="_blank" rel="noreferrer" className="hover:text-zinc-300 transition-colors">
+          <a href="https://github.com/SaiBhargavRallapalli/porthole/issues" target="_blank" rel="noreferrer" className="hover:text-zinc-300 transition-colors">
             Issues
           </a>
         </div>
