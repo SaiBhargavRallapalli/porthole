@@ -1,0 +1,48 @@
+{
+  "name": "@porthole/server",
+  "version": "1.0.0",
+  "description": "Porthole tunnel server — self-hosted HTTP tunnel infrastructure",
+  "license": "MIT",
+  "author": "porthole contributors",
+  "homepage": "https://github.com/OWNER/porthole#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OWNER/porthole.git",
+    "directory": "packages/server"
+  },
+  "bugs": {
+    "url": "https://github.com/OWNER/porthole/issues"
+  },
+  "keywords": ["tunnel", "server", "websocket", "proxy", "porthole"],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.16.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.0",
+    "@types/ws": "^8.5.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "name": "@porthole/cli",
+  "version": "1.0.0",
+  "description": "Expose your local server to the internet — a self-hosted tunnel CLI",
+  "license": "MIT",
+  "author": "porthole contributors",
+  "homepage": "https://github.com/OWNER/porthole#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OWNER/porthole.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/OWNER/porthole/issues"
+  },
+  "keywords": ["tunnel", "expose", "localhost", "ngrok", "localtunnel", "porthole", "dev-tools"],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "bin": {
+    "porthole": "dist/cli.js"
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "ts-node src/cli.ts",
+    "build": "tsc && chmod +x dist/cli.js",
+    "prepublishOnly": "npm run build",
+    "package": "npm run build && node scripts/package.js",
+    "start": "node dist/cli.js"
+  },
+  "pkg": {
+    "scripts": "dist/cli.js",
+    "targets": [
+      "node20-macos-arm64",
+      "node20-macos-x64",
+      "node20-linux-x64"
+    ],
+    "outputPath": "binaries"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "ws": "^8.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/ws": "^8.5.10",
+    "@vercel/pkg": "^5.8.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

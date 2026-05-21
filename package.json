@@ -1,0 +1,14 @@
+{
+  "name": "porthole",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "dev:server": "npm run dev -w @porthole/server",
+    "dev:cli": "npm run dev -w @porthole/cli",
+    "start:server": "npm run start -w @porthole/server"
+  }
+}
