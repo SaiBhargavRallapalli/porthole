@@ -127,9 +127,9 @@ function Hero() {
             <div className="flex flex-wrap gap-3">
               <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 font-mono text-sm flex-1 min-w-0">
                 <span className="text-emerald-400 shrink-0">$</span>
-                <span className="text-zinc-100 truncate">npm install -g @porthole/cli</span>
+                <span className="text-zinc-100 truncate">npm install -g @porthole-tunnel/cli</span>
               </div>
-              <CopyButton text="npm install -g @porthole/cli" />
+              <CopyButton text="npm install -g @porthole-tunnel/cli" />
             </div>
             <p className="mt-3 text-xs text-zinc-500">
               Or:{' '}
@@ -236,7 +236,7 @@ function HowItWorks() {
               n: '01',
               title: 'Install',
               body: 'Install the porthole CLI via npm or Homebrew. Requires Node 18+ (or use the standalone binary — no Node needed).',
-              code: 'npm i -g @porthole/cli',
+              code: 'npm i -g @porthole-tunnel/cli',
             },
             {
               n: '02',
@@ -329,7 +329,7 @@ function QuickStart() {
               <NpmIcon />
               <span className="font-semibold text-zinc-200">via npm</span>
             </div>
-            <CodeBlock label="Install globally" code="npm install -g @porthole/cli" />
+            <CodeBlock label="Install globally" code="npm install -g @porthole-tunnel/cli" />
             <CodeBlock label="Expose port 3000" code="porthole 3000" />
             <CodeBlock label="Custom subdomain + open browser" code="porthole 3000 --subdomain my-demo --open" />
             <CodeBlock label="Use a private server" code={`porthole 3000 \\\n  --server https://porthole.devbench.co.in \\\n  --token mysecret`} />
@@ -376,7 +376,7 @@ function Packages() {
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-7">
             <div className="flex items-start justify-between mb-4">
               <div>
-                <p className="font-mono text-sm text-emerald-400 mb-1">@porthole/cli</p>
+                <p className="font-mono text-sm text-emerald-400 mb-1">@porthole-tunnel/cli</p>
                 <h3 className="text-xl font-bold">The CLI tool</h3>
               </div>
               <span className="badge border-zinc-700 text-zinc-400 text-xs">v1.0.0</span>
@@ -392,14 +392,14 @@ function Packages() {
                 </div>
               ))}
             </div>
-            <CodeBlock label="" code="npm install -g @porthole/cli" />
+            <CodeBlock label="" code="npm install -g @porthole-tunnel/cli" />
           </div>
 
           {/* Server */}
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-7">
             <div className="flex items-start justify-between mb-4">
               <div>
-                <p className="font-mono text-sm text-sky-400 mb-1">@porthole/server</p>
+                <p className="font-mono text-sm text-sky-400 mb-1">@porthole-tunnel/server</p>
                 <h3 className="text-xl font-bold">The tunnel server</h3>
               </div>
               <span className="badge border-zinc-700 text-zinc-400 text-xs">v1.0.0</span>
@@ -415,7 +415,7 @@ function Packages() {
                 </div>
               ))}
             </div>
-            <CodeBlock label="" code="npm install @porthole/server" />
+            <CodeBlock label="" code="npm install @porthole-tunnel/server" />
           </div>
         </div>
       </div>
@@ -575,7 +575,7 @@ function Footer() {
           <a href="https://github.com/SaiBhargavRallapalli/porthole" target="_blank" rel="noreferrer" className="hover:text-zinc-300 transition-colors">
             GitHub
           </a>
-          <a href="https://www.npmjs.com/package/@porthole/cli" target="_blank" rel="noreferrer" className="hover:text-zinc-300 transition-colors">
+          <a href="https://www.npmjs.com/package/@porthole-tunnel/cli" target="_blank" rel="noreferrer" className="hover:text-zinc-300 transition-colors">
             npm
           </a>
           <a href="https://github.com/SaiBhargavRallapalli/porthole/issues" target="_blank" rel="noreferrer" className="hover:text-zinc-300 transition-colors">

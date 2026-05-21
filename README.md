@@ -64,7 +64,7 @@ DOMAIN=porthole.dev
 
 Then install the CLI globally:
 ```bash
-npm install -g @porthole/cli
+npm install -g @porthole-tunnel/cli
 porthole 3000 --server https://porthole.dev
 ```
 

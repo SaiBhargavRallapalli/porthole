@@ -49,13 +49,13 @@ jobs:
             packages/cli/binaries/checksums.txt
           generate_release_notes: true
 
-      - name: Publish @porthole/cli to npm
+      - name: Publish @porthole-tunnel/cli to npm
         working-directory: packages/cli
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish @porthole/server to npm
+      - name: Publish @porthole-tunnel/server to npm
         working-directory: packages/server
         run: npm publish --access public
         env:

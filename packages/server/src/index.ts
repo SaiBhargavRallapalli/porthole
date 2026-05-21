@@ -180,7 +180,7 @@ const LANDING_HTML = `<!DOCTYPE html>
   <h1>porthole 🕳</h1>
   <p>Expose your local server to the internet.</p>
   <h2>Install</h2>
-  <pre>npm install -g @porthole/cli</pre>
+  <pre>npm install -g @porthole-tunnel/cli</pre>
   <h2>Use</h2>
   <pre>porthole 3000</pre>
   <p>Your local port 3000 will be available at a public URL instantly.</p>

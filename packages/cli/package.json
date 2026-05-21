@@ -1,5 +1,5 @@
 {
-  "name": "@porthole/cli",
+  "name": "@porthole-tunnel/cli",
   "version": "1.0.0",
   "description": "Expose your local server to the internet — a self-hosted tunnel CLI",
   "license": "MIT",

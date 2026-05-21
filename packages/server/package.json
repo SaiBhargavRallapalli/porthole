@@ -1,5 +1,5 @@
 {
-  "name": "@porthole/server",
+  "name": "@porthole-tunnel/server",
   "version": "1.0.0",
   "description": "Porthole tunnel server — self-hosted HTTP tunnel infrastructure",
   "license": "MIT",

@@ -7,9 +7,9 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces --if-present",
-    "dev:server": "npm run dev -w @porthole/server",
-    "dev:cli": "npm run dev -w @porthole/cli",
-    "dev:web": "npm run dev -w @porthole/web",
-    "start:server": "npm run start -w @porthole/server"
+    "dev:server": "npm run dev -w @porthole-tunnel/server",
+    "dev:cli": "npm run dev -w @porthole-tunnel/cli",
+    "dev:web": "npm run dev -w @porthole-tunnel/web",
+    "start:server": "npm run start -w @porthole-tunnel/server"
   }
 }
