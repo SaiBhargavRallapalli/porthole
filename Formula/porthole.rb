@@ -1,12 +1,16 @@
-# To use this formula, create a tap:
+# Homebrew formula for the porthole CLI (standalone binary, no Node required).
+#
+# Setup (maintainer):
+#   1. Tag a release and upload binaries (see README below or .github/workflows/release.yml)
+#   2. Fill in the three sha256 values from packages/cli/binaries/checksums.txt
+#   3. Commit and push
+#
+# Install (users):
 #   brew tap SaiBhargavRallapalli/porthole https://github.com/SaiBhargavRallapalli/porthole
 #   brew install porthole
 #
-# Or install directly:
+# Or one-shot (no tap):
 #   brew install --formula https://raw.githubusercontent.com/SaiBhargavRallapalli/porthole/main/Formula/porthole.rb
-#
-# After a release, update version + sha256 values and run:
-#   brew audit --new-formula Formula/porthole.rb
 
 class Porthole < Formula
   desc "Expose your local server to the internet"
@@ -36,10 +40,13 @@ class Porthole < Formula
   end
 
   def install
-    binary = Dir["porthole-*"].first
-    raise "No binary found" unless binary
-
-    bin.install binary => "porthole"
+    if OS.mac? && Hardware::CPU.arm?
+      bin.install "porthole-macos-arm64" => "porthole"
+    elsif OS.mac?
+      bin.install "porthole-macos-x64" => "porthole"
+    else
+      bin.install "porthole-linux-x64" => "porthole"
+    end
   end
 
   test do
