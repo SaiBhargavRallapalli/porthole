@@ -7,13 +7,19 @@
   "homepage": "https://github.com/SaiBhargavRallapalli/porthole#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SaiBhargavRallapalli/porthole.git",
+    "url": "git+https://github.com/SaiBhargavRallapalli/porthole.git",
     "directory": "packages/server"
   },
   "bugs": {
     "url": "https://github.com/SaiBhargavRallapalli/porthole/issues"
   },
-  "keywords": ["tunnel", "server", "websocket", "proxy", "porthole"],
+  "keywords": [
+    "tunnel",
+    "server",
+    "websocket",
+    "proxy",
+    "porthole"
+  ],
   "engines": {
     "node": ">=18.0.0"
   },
