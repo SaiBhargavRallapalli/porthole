@@ -1,0 +1,32 @@
+# porthole
+
+> Self-hosted localhost tunneling: expose your local server to the internet with a single CLI command.
+
+porthole is an open-source alternative to ngrok-style tunnels. A persistent WebSocket connects your machine to a tunnel server; HTTP traffic for your subdomain is proxied to localhost.
+
+## Install
+
+- npm: `npm install -g @porthole-tunnel/cli`
+- Homebrew: see repository `Formula/porthole.rb`
+- GitHub: https://github.com/SaiBhargavRallapalli/porthole
+
+## Quick start
+
+```bash
+porthole 3000
+```
+
+## Packages
+
+- CLI (client): https://www.npmjs.com/package/@porthole-tunnel/cli
+- Server (self-host): https://www.npmjs.com/package/@porthole-tunnel/server
+
+## Documentation
+
+- Repository README: https://github.com/SaiBhargavRallapalli/porthole/blob/main/README.md
+- CLI README: https://github.com/SaiBhargavRallapalli/porthole/blob/main/packages/cli/README.md
+- Server README: https://github.com/SaiBhargavRallapalli/porthole/blob/main/packages/server/README.md
+
+## Site
+
+- Landing page: https://porthole.devbench.co.in
