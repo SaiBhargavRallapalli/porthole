@@ -1,6 +1,6 @@
 {
   "name": "@porthole-tunnel/server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Porthole tunnel server — self-hosted HTTP tunnel infrastructure",
   "license": "MIT",
   "author": "porthole contributors",
