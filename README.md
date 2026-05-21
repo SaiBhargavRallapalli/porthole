@@ -77,21 +77,26 @@ DOMAIN=127.0.0.1.sslip.io:3000 npm run dev
 # Your tunnels will be at http://swift-fox-1234.127.0.0.1.sslip.io:3000
 ```
 
+## Packages
+
+| Package | npm | Docs |
+|---------|-----|------|
+| CLI | [@porthole-tunnel/cli](https://www.npmjs.com/package/@porthole-tunnel/cli) | [packages/cli/README.md](packages/cli/README.md) |
+| Server | [@porthole-tunnel/server](https://www.npmjs.com/package/@porthole-tunnel/server) | [packages/server/README.md](packages/server/README.md) |
+
 ## CLI options
+
+See [packages/cli/README.md](packages/cli/README.md) for full usage. Summary:
 
 ```
 porthole <port> [options]
 
-Arguments:
-  port                   Local port to expose
-
-Options:
-  -s, --subdomain <name> Request a specific subdomain
+  -s, --subdomain <name>   Request a specific subdomain
   --server <url>         Porthole server URL (default: http://localhost:3000)
   --local-host <host>    Local hostname to forward to (default: localhost)
+  --token <token>        Auth token (if server has AUTH_TOKEN set)
+  --open                 Open the public URL in your browser
   --print-requests       Log every forwarded request
-  -V, --version          Print version
-  -h, --help             Show help
 ```
 
 ## Build
