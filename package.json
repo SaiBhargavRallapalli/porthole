@@ -9,6 +9,7 @@
     "build": "npm run build --workspaces --if-present",
     "dev:server": "npm run dev -w @porthole/server",
     "dev:cli": "npm run dev -w @porthole/cli",
+    "dev:web": "npm run dev -w @porthole/web",
     "start:server": "npm run start -w @porthole/server"
   }
 }

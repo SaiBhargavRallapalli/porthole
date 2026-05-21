@@ -20,7 +20,7 @@ for (const { target, output } of TARGETS) {
   const outPath = path.join(binDir, output);
   console.log(`Building ${output}…`);
   execSync(
-    `npx pkg dist/cli.js --target ${target} --output ${outPath} --compress GZip`,
+    `node_modules/.bin/pkg dist/cli.js --target ${target} --output ${outPath} --compress GZip`,
     { stdio: 'inherit', cwd: path.join(__dirname, '..') },
   );
 }

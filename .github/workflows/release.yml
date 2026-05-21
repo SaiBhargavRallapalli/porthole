@@ -1,0 +1,62 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build binaries & publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build TypeScript
+        run: npm run build
+
+      - name: Build standalone binaries
+        working-directory: packages/cli
+        run: node scripts/package.js
+
+      - name: Compute SHA-256 checksums
+        working-directory: packages/cli/binaries
+        run: |
+          sha256sum porthole-macos-arm64 porthole-macos-x64 porthole-linux-x64 porthole-win-x64.exe \
+            > checksums.txt || true
+          cat checksums.txt
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            packages/cli/binaries/porthole-macos-arm64
+            packages/cli/binaries/porthole-macos-x64
+            packages/cli/binaries/porthole-linux-x64
+            packages/cli/binaries/porthole-win-x64.exe
+            packages/cli/binaries/checksums.txt
+          generate_release_notes: true
+
+      - name: Publish @porthole/cli to npm
+        working-directory: packages/cli
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @porthole/server to npm
+        working-directory: packages/server
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
