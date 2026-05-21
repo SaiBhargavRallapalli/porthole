@@ -32,7 +32,18 @@ Produces:
 - `porthole-linux-x64`
 - `porthole-win-x64.exe`
 
-Upload these to a GitHub Release tagged `v1.0.0` (version must match `Formula/porthole.rb`).
+Upload these to a GitHub Release tagged `v1.0.1` (version must match `Formula/porthole.rb`).
+
+**Manual upload** (if the workflow failed but you built locally):
+
+```bash
+cd packages/cli/binaries
+gh release create v1.0.1 \
+  porthole-macos-arm64 porthole-macos-x64 porthole-linux-x64 porthole-win-x64.exe checksums.txt \
+  --title "v1.0.1" --notes "CLI standalone binaries"
+```
+
+If the tag already exists without assets, use `gh release upload v1.0.1` with the same file list.
 
 ### 2. Update the formula
 
@@ -51,8 +62,9 @@ shasum -a 256 porthole-macos-arm64 porthole-macos-x64 porthole-linux-x64
 ### 3. Validate
 
 ```bash
+# From the repo root (after GitHub Release assets exist and sha256 lines are filled in):
 brew audit --strict Formula/porthole.rb
-brew install --formula Formula/porthole.rb
+brew install ./Formula/porthole.rb
 porthole --version
 ```
 
@@ -76,8 +88,19 @@ porthole 3000
 
 ### One-shot (no tap)
 
+Requires a published GitHub Release matching `version` in the formula (binaries + real `sha256` values).
+
 ```bash
-brew install --formula https://raw.githubusercontent.com/SaiBhargavRallapalli/porthole/main/Formula/porthole.rb
+brew install https://raw.githubusercontent.com/SaiBhargavRallapalli/porthole/main/Formula/porthole.rb
+```
+
+### Local formula file (maintainers)
+
+`brew install --formula Formula/porthole.rb` looks up a **formula name**, not a path. Use `./`:
+
+```bash
+cd /path/to/porthole
+brew install ./Formula/porthole.rb
 ```
 
 ### Optional: dedicated tap repo

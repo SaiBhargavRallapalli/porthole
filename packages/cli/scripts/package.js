@@ -7,10 +7,10 @@ const path = require('path');
 const fs = require('fs');
 
 const TARGETS = [
-  { target: 'node20-macos-arm64', output: 'porthole-macos-arm64' },
-  { target: 'node20-macos-x64',   output: 'porthole-macos-x64'   },
-  { target: 'node20-linux-x64',   output: 'porthole-linux-x64'   },
-  { target: 'node20-win-x64',     output: 'porthole-win-x64.exe' },
+  { target: 'node18-macos-arm64', output: 'porthole-macos-arm64' },
+  { target: 'node18-macos-x64',   output: 'porthole-macos-x64'   },
+  { target: 'node18-linux-x64',   output: 'porthole-linux-x64'   },
+  { target: 'node18-win-x64',     output: 'porthole-win-x64.exe' },
 ];
 
 // Optional: PKG_TARGETS=porthole-macos-arm64,porthole-linux-x64 (for split CI runners)
@@ -24,15 +24,30 @@ if (!selected.length) {
   process.exit(1);
 }
 
-const binDir = path.join(__dirname, '..', 'binaries');
+const cliRoot = path.join(__dirname, '..');
+const repoRoot = path.join(cliRoot, '..', '..');
+
+function resolvePkgBin() {
+  const candidates = [
+    path.join(cliRoot, 'node_modules', '.bin', 'pkg'),
+    path.join(repoRoot, 'node_modules', '.bin', 'pkg'),
+  ];
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) return candidate;
+  }
+  return 'pkg'; // on PATH (e.g. npx)
+}
+
+const pkgBin = resolvePkgBin();
+const binDir = path.join(cliRoot, 'binaries');
 fs.mkdirSync(binDir, { recursive: true });
 
 for (const { target, output } of selected) {
   const outPath = path.join(binDir, output);
   console.log(`Building ${output}…`);
   execSync(
-    `node_modules/.bin/pkg dist/cli.js --target ${target} --output ${outPath} --compress GZip`,
-    { stdio: 'inherit', cwd: path.join(__dirname, '..') },
+    `"${pkgBin}" dist/cli.js --target ${target} --output ${outPath} --compress GZip`,
+    { stdio: 'inherit', cwd: cliRoot },
   );
 }
 
