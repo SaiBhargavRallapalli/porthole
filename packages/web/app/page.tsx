@@ -6,7 +6,7 @@ const FEATURES = [
   {
     icon: '⚡',
     title: 'Zero configuration',
-    body: 'One command. No config files, no sign-up, no credit card. porthole <port> and you\'re live.',
+    body: 'One command. No config files, no sign-up, no credit card. porthole <port> and you are live.',
   },
   {
     icon: '🔄',

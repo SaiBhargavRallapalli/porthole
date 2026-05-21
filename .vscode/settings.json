@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "**/.next/**": "plaintext"
+  },
+  "search.exclude": {
+    "**/.next": true
+  }
+}
